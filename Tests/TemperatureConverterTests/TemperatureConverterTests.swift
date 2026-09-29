@@ -54,4 +54,13 @@ final class TemperatureConverterTests: XCTestCase {
         XCTAssertNil(celsius)
         XCTAssertNil(fahrenheit)
     }
+
+    func testCelsiusAndFahrenheitConsistency() {
+    let celsius = TemperatureConverter.celsius(from: 300)!
+    let fahrenheit = TemperatureConverter.fahrenheit(from: 300)!
+    
+    let expectedFahrenheit = (celsius * 9 / 5) + 32
+    
+    XCTAssertEqual(fahrenheit, expectedFahrenheit, accuracy: 0.01)
+    }
 }
